@@ -9,3 +9,11 @@
   background: black;
   color: white;
 }
+.color__role {
+  padding: 2px 6px;
+  width: max-content;
+}
+.color__contrast {
+  padding: 2px 6px;
+  width: max-content;
+}
