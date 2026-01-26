@@ -4,10 +4,18 @@ import "./App.css";
 
 function App() {
   return (
-    <>
-      <h1>Theme Creator</h1>
-      // display colors here
-    </>
+    <main>
+      <section className="theme">
+        <h1>Theme Creator</h1>
+        <ul className="theme__colorlist">
+          {initialColors.map((oneColor) => (
+            <li key={oneColor.id} className="theme__coloritem">
+              <Color color={oneColor} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
   );
 }
 
