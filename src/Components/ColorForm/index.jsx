@@ -3,24 +3,27 @@ import { nanoid } from "nanoid";
 import "./ColorForm.css";
 import ColorInput from "../ColorInput";
 
-const initialData = { role: "empty", hex: "#cf1414", contrastText: "#FFFFFF" };
+const defaultFormData = {
+  role: "empty",
+  hex: "#cf1414",
+  contrastText: "#FFFFFF",
+};
 
-export default function ColorForm({ onAddColor }) {
+export default function ColorForm({ onSubmitColor, initialData }) {
+  const defaultValues = initialData || defaultFormData;
   function handleSubmit(event) {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    console.log("🤔 data:", data);
     const dataWithId = { ...data, id: nanoid() };
-    console.log("Fertiges Objekt für die Liste:", dataWithId);
-    onAddColor(dataWithId);
+    onSubmitColor(dataWithId);
     event.target.reset();
   }
   return (
     <form className="colorForm" onSubmit={handleSubmit}>
-      <h2>Add a new Color</h2>
+      <h2> {initialData ? "Update Color" : "Add a new Color"}</h2>
       <div className="colorForm__fields">
         <div className="colorForm__field">
           <label className="colorForm__label" htmlFor="role">
@@ -33,7 +36,7 @@ export default function ColorForm({ onAddColor }) {
               name="role"
               placeholder="some color"
               required
-              defaultValue={initialData.role}
+              defaultValue={defaultValues.role}
             />
           </label>
         </div>
@@ -41,7 +44,7 @@ export default function ColorForm({ onAddColor }) {
           <label className="colorForm__label" htmlFor="hex">
             Hex Number
             <br />
-            <ColorInput id="hex" defaultValue={initialData.hex} />
+            <ColorInput id="hex" defaultValue={defaultValues.hex} />
           </label>
         </div>
         <div className="colorForm__field">
@@ -50,14 +53,14 @@ export default function ColorForm({ onAddColor }) {
             <br />
             <ColorInput
               id="contrastText"
-              defaultValue={initialData.contrastText}
+              defaultValue={defaultValues.contrastText}
             />
           </label>
         </div>
       </div>
       <br />
       <button type="submit" className="colorForm__button">
-        Add Color
+        {initialData ? "Update Color" : "Add Color"}
       </button>
     </form>
   );
