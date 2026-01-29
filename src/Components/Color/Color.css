@@ -27,3 +27,16 @@
   border-radius: 8px;
   width: fit-content;
 }
+.color-card__edit {
+  background-color: yellow;
+}
+.color-card__delete {
+  background-color: red;
+}
+.colorForm__fields {
+  background-color: aqua;
+  width: fit-content;
+  border: 2px solid black;
+  gap: 2px;
+  padding: 3px;
+}

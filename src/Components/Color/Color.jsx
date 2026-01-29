@@ -78,8 +78,18 @@ export default function Color({ color, onDeleteColor, onEditColor }) {
             >
               Really delete?
             </p>
-            <button onClick={() => setShowConfirm(false)}>Cancel</button>
-            <button onClick={() => onDeleteColor(color.id)}>Confirm</button>
+            <button
+              style={{ backgroundColor: "red" }}
+              onClick={() => setShowConfirm(false)}
+            >
+              Cancel
+            </button>
+            <button
+              style={{ backgroundColor: "green" }}
+              onClick={() => onDeleteColor(color.id)}
+            >
+              Confirm
+            </button>
           </div>
         )}
       </div>

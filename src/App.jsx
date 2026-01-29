@@ -4,10 +4,13 @@ import ColorForm from "./Components/ColorForm";
 import "./App.css";
 import "./Components/ColorInput/Colorinput.css";
 import "./Components/ColorForm/ColorForm.css";
-import { useState } from "react";
+/* import { useState } from "react"; */
+import useLocalStorageState from "use-local-storage-state";
 
 function App() {
-  const [colors, setColors] = useState(initialColors);
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
   function handleAddColor(newColor) {
     setColors([newColor, ...colors]);
   }
