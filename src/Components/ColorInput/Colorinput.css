@@ -1,0 +1,11 @@
+.color-input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.color-input__text {
+  align-items: center;
+}
+.color-input__picker {
+  align-items: center;
+}
